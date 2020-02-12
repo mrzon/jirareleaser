@@ -1,0 +1,6 @@
+{
+    "token": "https://confluence.atlassian.com/cloud/api-tokens-938839638.html",
+    "email": "email that bind to your JIRA account",
+    "user_id": "user id in that jira account",
+    "test": true
+}
