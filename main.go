@@ -18,7 +18,7 @@ func main() {
 
 	jiraConfig := getConfig()
 	for _, service := range services {
-		template := getTemplate(jiraConfig.UserID, releaseDate, service)
+		template := getTemplate(jiraConfig, releaseDate, service)
 		response := jiracall(service, template, jiraConfig)
 
 		fmt.Println(service + " " + releaseDate + " https://29022131.atlassian.net/browse/" + response)

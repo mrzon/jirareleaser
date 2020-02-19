@@ -8,10 +8,11 @@ import (
 
 // JiraConfig is a config to communicate with JIRA account.
 type JiraConfig struct {
-	Token  string `json:"token,omitempty"`
-	Email  string `json:"email,omitempty"`
-	UserID string `json:"user_id,omitempty"`
-	Test   bool   `json:"test,omitempty"`
+	Token   string `json:"token,omitempty"`
+	Email   string `json:"email,omitempty"`
+	UserID  string `json:"user_id,omitempty"`
+	Test    bool   `json:"test,omitempty"`
+	Project string `json:"project"`
 }
 
 var defaultConfig *JiraConfig

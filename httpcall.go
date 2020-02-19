@@ -46,5 +46,8 @@ func jiracall(service, content string, config *JiraConfig) string {
 
 	jiraResponse := &JiraResponse{}
 	json.Unmarshal(respBytes, jiraResponse)
+	if jiraResponse.Key == "" {
+		return "Failed call"
+	}
 	return jiraResponse.Key
 }
