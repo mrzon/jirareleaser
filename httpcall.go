@@ -19,7 +19,7 @@ type JiraResponse struct {
 func jiracall(service, content string, config *JiraConfig) string {
 
 	if config.Test {
-		return "TEST-" + service
+		return "TEST-" + config.Project + "-" + service
 	}
 
 	url := "https://29022131.atlassian.net/rest/api/2/issue/"

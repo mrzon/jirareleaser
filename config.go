@@ -18,7 +18,7 @@ type JiraConfig struct {
 var defaultConfig *JiraConfig
 
 //fetch default config
-func getConfig() *JiraConfig {
+func getJiraConfig() *JiraConfig {
 	if defaultConfig != nil { //ensure only run once, if the content change, restart the program.
 		return defaultConfig
 	}
