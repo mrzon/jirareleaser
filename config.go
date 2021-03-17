@@ -2,17 +2,20 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
+	"path"
 )
 
 // JiraConfig is a config to communicate with JIRA account.
 type JiraConfig struct {
-	Token   string `json:"token,omitempty"`
-	Email   string `json:"email,omitempty"`
-	UserID  string `json:"user_id,omitempty"`
-	Test    bool   `json:"test,omitempty"`
-	Project string `json:"project"`
+	Token     string `json:"token,omitempty"`
+	Email     string `json:"email,omitempty"`
+	UserID    string `json:"user_id,omitempty"`
+	Test      bool   `json:"test,omitempty"`
+	Project   string `json:"project"`
+	Component string `json:"component"`
 }
 
 var defaultConfig *JiraConfig
@@ -23,7 +26,12 @@ func getJiraConfig() *JiraConfig {
 		return defaultConfig
 	}
 
-	file, err := os.Open("config.json")
+	// To get the path if user store the binary in $PATH
+	file, err := os.Open(getBinaryPath() + "/config.json")
+	if err != nil {
+		file, err = os.Open("config.json")
+	}
+
 	defer file.Close()
 
 	if err == nil {
@@ -36,4 +44,12 @@ func getJiraConfig() *JiraConfig {
 	}
 
 	return nil
+}
+
+func getBinaryPath() string {
+	e, err := os.Executable()
+	if err != nil {
+		return ""
+	}
+	return fmt.Sprint(path.Dir(e))
 }

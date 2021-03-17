@@ -16,7 +16,7 @@ func getTemplate(jiraConfig *JiraConfig, releaseDate string, service string) str
 			},
 			"components": [
 				{
-				"name": "BACKEND"
+				"name": "%s"
 				}
 			],
 			"assignee": {
@@ -25,5 +25,5 @@ func getTemplate(jiraConfig *JiraConfig, releaseDate string, service string) str
 		}
 	}`
 
-	return fmt.Sprintf(template, jiraConfig.Project, releaseDate, service, jiraConfig.UserID)
+	return fmt.Sprintf(template, jiraConfig.Project, releaseDate, service, jiraConfig.Component, jiraConfig.UserID)
 }
