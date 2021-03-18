@@ -8,12 +8,15 @@ import (
 
 // JiraConfig is a config to communicate with JIRA account.
 type JiraConfig struct {
-	Token   string `json:"token,omitempty"`
-	Email   string `json:"email,omitempty"`
-	UserID  string `json:"user_id,omitempty"`
-	Test    bool   `json:"test,omitempty"`
-	Project string `json:"project"`
+	Token     string `json:"token,omitempty"`
+	Email     string `json:"email,omitempty"`
+	UserID    string `json:"user_id,omitempty"`
+	Test      bool   `json:"test,omitempty"`
+	Project   string `json:"project"`
+	Component string `json:"component"`
 }
+
+const _defaultComponent = "BACKEND"
 
 var defaultConfig *JiraConfig
 
@@ -31,6 +34,9 @@ func getJiraConfig() *JiraConfig {
 
 		byteContent, _ := ioutil.ReadAll(file)
 		json.Unmarshal(byteContent, jiraConfig)
+		if jiraConfig.Component == "" {
+			jiraConfig.Component = _defaultComponent
+		}
 		defaultConfig = jiraConfig
 		return defaultConfig
 	}
