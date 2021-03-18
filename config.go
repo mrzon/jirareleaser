@@ -16,7 +16,7 @@ type JiraConfig struct {
 	Component string `json:"component"`
 }
 
-const componentBackend = "BACKEND"
+const _defaultComponent = "BACKEND"
 
 var defaultConfig *JiraConfig
 
@@ -35,7 +35,7 @@ func getJiraConfig() *JiraConfig {
 		byteContent, _ := ioutil.ReadAll(file)
 		json.Unmarshal(byteContent, jiraConfig)
 		if jiraConfig.Component == "" {
-			jiraConfig.Component = componentBackend
+			jiraConfig.Component = _defaultComponent
 		}
 		defaultConfig = jiraConfig
 		return defaultConfig
