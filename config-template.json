@@ -2,6 +2,7 @@
     "token": "https://confluence.atlassian.com/cloud/api-tokens-938839638.html",
     "email": "email that bind to your JIRA account",
     "user_id": "user id in that jira account",
-    "test": false, 
-    "project":"JIRA Project code, e.g. STL, BUS, fill with your project domain"
+    "test": false,
+    "project": "JIRA Project code, e.g. STL, BUS, fill with your project domain",
+    "component": "optional, if empty will use 'BACKEND'"
 }
